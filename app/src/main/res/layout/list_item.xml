@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="movieItem"
+            type="com.aabhishek.indeetvassignment.business.domain.entity.ItemDetails" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:text="@{movieItem.name}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Test Title" />
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:load_from_file="@{movieItem.posterLink}"
+            tools:src="@drawable/testimage" />
+
+        <TextView
+            android:id="@+id/planlabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Plan"
+            app:layout_constraintStart_toEndOf="@id/banner"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+        <TextView
+            android:id="@+id/durationtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Duration"
+            app:layout_constraintStart_toStartOf="@id/planlabel"
+            app:layout_constraintTop_toBottomOf="@id/planlabel" />
+
+        <TextView
+            android:id="@+id/createdTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Created On :"
+            app:layout_constraintStart_toStartOf="@id/durationtitle"
+            app:layout_constraintTop_toBottomOf="@id/durationtitle" />
+
+        <TextView
+            android:id="@+id/updatedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Updated On :"
+            app:layout_constraintStart_toStartOf="@id/createdTitle"
+            app:layout_constraintTop_toBottomOf="@id/createdTitle" />
+
+        <TextView
+            android:id="@+id/shortDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:text="@{movieItem.shortDescription}"
+            android:textColor="#757474"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/updatedTitle"
+            app:layout_constraintTop_toBottomOf="@id/updatedTitle"
+            tools:text="lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:text="@{movieItem.description}"
+            android:textColor="#757474"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/banner"
+            app:layout_constraintTop_toBottomOf="@id/barrier"
+            tools:text="lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="banner,shortDesc" />
+
+        <TextView
+            android:id="@+id/release_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{String.valueOf(movieItem.release_year)}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/planlabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/barrier2"
+            android:layout_marginStart="16dp"
+            tools:text="2025" />
+
+        <TextView
+            android:id="@+id/durationValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{movieItem.video_duration}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/durationtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/barrier2"
+            android:layout_marginStart="16dp"
+            tools:text="12:30" />
+
+        <TextView
+            android:id="@+id/createdValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{movieItem.created_on}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/createdTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/barrier2"
+            android:layout_marginStart="16dp"
+            tools:text="2010-09-10" />
+
+        <TextView
+            android:id="@+id/updatedValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{movieItem.updated_on}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/updatedTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/barrier2"
+            android:layout_marginStart="16dp"
+            tools:text="2019-05-20" />
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="planlabel,durationtitle,createdTitle, updatedTitle"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
